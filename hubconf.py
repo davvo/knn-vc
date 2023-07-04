@@ -55,7 +55,7 @@ def hifigan_wavlm(pretrained=True, progress=True, prematched=True, device='cuda'
 def wavlm_large(pretrained=True, progress=True, device='cuda') -> WavLM:
     """Load the WavLM large checkpoint from the original paper. See https://github.com/microsoft/unilm/tree/master/wavlm for details. """
     if torch.cuda.is_available() == False:
-        if str(device) != 'cpu':
+        if str(device) == 'cuda':
             logging.warning(f"Overriding device {device} to cpu since no GPU is available.")
             device = 'cpu'
     checkpoint = torch.hub.load_state_dict_from_url(
